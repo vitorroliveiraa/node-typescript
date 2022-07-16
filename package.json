@@ -4,22 +4,18 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "start": "",
-    "typeorm": "typeorm-ts-node-commonjs",
-    "ds": "-d ./src/database/data-source.ts",
-    "migration:generate": "typeorm migration:generate ./src/database/migrations/$npm_config_name && ds",
-    "migration:generatex": "typeorm migration:generate -n",
-    "migration:create": "typeorm migration:create src/database/migrations/$npm_config_name",
-    "migration:revert": "typeorm migration:revert",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/database/data-source.ts",
-    "migration:show": "typeorm migration:show",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/database/index.ts",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",

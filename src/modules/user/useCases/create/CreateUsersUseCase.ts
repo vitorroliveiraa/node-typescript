@@ -1,15 +1,14 @@
-import { inject, injectable, autoInjectable } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
-import { UserTest } from '../../entities/user';
-import { IUserRepository } from '../../repositories/IUserRepository';
+import { Users } from '../../entities/Users';
+import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 @injectable()
-@autoInjectable()
-export class UserUseCase {
+export class CreateUsersUseCase {
   constructor(
     @inject('UserRepository')
-    private userRepository: IUserRepository
+    private usersRepository: IUsersRepository
   ) {}
   // private userRepository: IUserRepository;
 
@@ -21,10 +20,10 @@ export class UserUseCase {
     firstName,
     lastName,
     email,
-  }: ICreateUserDTO): Promise<UserTest> {
+  }: ICreateUserDTO): Promise<Users> {
     console.log('useCase');
 
-    const user = await this.userRepository.create({
+    const user = await this.usersRepository.create({
       firstName,
       lastName,
       email,

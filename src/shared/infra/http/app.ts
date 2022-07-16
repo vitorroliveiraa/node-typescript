@@ -10,16 +10,6 @@ import { AppError } from '../../errors/AppError';
 // import swaggerFile from '../../../swagger.json'; API Doc
 import { router } from './routes';
 
-// AppDataSource.initialize()
-//   .then(() => {
-//     console.log('Data Source has been initialized!');
-//     console.log('------------------------------------------');
-//   })
-//   .catch(err => {
-//     console.error('Error during Data Source initialization =>', err);
-//     console.log('------------------------------------------');
-//   }); // Abrir conexão com o banco
-
 const app = express();
 
 app.use(cors());

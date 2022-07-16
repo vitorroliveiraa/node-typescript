@@ -1,17 +1,17 @@
 import { UserRepositoryInMemory } from '../../repositories/in-memory/UserRepositoryInMemory';
-import { UserUseCase } from './UserUseCase';
+import { CreateUsersUseCase } from './CreateUsersUseCase';
 
 let userRepositoryInMemory: UserRepositoryInMemory;
-let userUseCase: UserUseCase;
+let createUsersUseCase: CreateUsersUseCase;
 
 describe('Create User', () => {
   beforeEach(() => {
     userRepositoryInMemory = new UserRepositoryInMemory();
-    userUseCase = new UserUseCase(userRepositoryInMemory);
+    createUsersUseCase = new CreateUsersUseCase(userRepositoryInMemory);
   });
 
   it('should be able to create a new user', async () => {
-    const user = await userUseCase.execute({
+    const user = await createUsersUseCase.execute({
       firstName: 'Ronald',
       lastName: 'Patton',
       email: 'didloas@dup.mz',
