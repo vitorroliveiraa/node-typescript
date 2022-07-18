@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 
 import { Users } from '../modules/user/entities/Users';
+import { UsersEntity1658012024929 } from './migrations/1658012024929-UsersEntity';
 
 // const defaultHost = process.env.DEFAULT_HOST;
 
@@ -19,7 +20,7 @@ const dataSource = new DataSource({
   uuidExtension: 'uuid-ossp',
   logging: ['query', 'error', 'warn', 'info', 'log'],
   entities: [Users],
-  migrations: [],
+  migrations: [UsersEntity1658012024929],
   migrationsTableName: 'migrations',
 });
 
