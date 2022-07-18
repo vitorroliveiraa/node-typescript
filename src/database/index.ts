@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 
 import { Users } from '../modules/user/entities/Users';
-import { UsersEntity1658012024929 } from './migrations/1658012024929-UsersEntity';
+// import { UsersEntity1658154534266 } from './migrations/1658154534266-UsersEntity';
 
 // const defaultHost = process.env.DEFAULT_HOST;
 
@@ -18,10 +18,12 @@ const dataSource = new DataSource({
   synchronize: false,
   useUTC: false, // false: local time | true: UTC
   uuidExtension: 'uuid-ossp',
-  logging: ['query', 'error', 'warn', 'info', 'log'],
-  entities: [Users],
-  migrations: [UsersEntity1658012024929],
-  migrationsTableName: 'migrations',
+  logging: ['query', 'error'],
+  entities: [`${__dirname}/../modules/**/entities/*.{ts,js}`],
+  // entities: [Users],
+  migrations: [`${__dirname}/migrations/*.{ts,js}`],
+  // migrations: [UsersEntity1658154534266],
+  migrationsTableName: '_migrations',
 });
 
 export function createConnection(host = 'db_users'): Promise<DataSource> {
