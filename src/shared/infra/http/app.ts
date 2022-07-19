@@ -10,6 +10,8 @@ import { AppError } from '../../errors/AppError';
 // import swaggerFile from '../../../swagger.json'; API Doc
 import { router } from './routes';
 
+import '../../container';
+
 const app = express();
 
 app.use(cors());
