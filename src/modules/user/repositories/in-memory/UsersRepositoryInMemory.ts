@@ -1,17 +1,13 @@
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
 import { IUpdateUserDTO } from '../../dtos/IUpdateUserDTO';
-import { UserTest } from '../../entities/user';
-import { IUserRepository } from '../IUserRepository';
+import { Users } from '../../entities/Users';
+import { IUsersRepository } from '../IUsersRepository';
 
-export class UserRepositoryInMemory implements IUserRepository {
-  users: UserTest[] = [];
+export class UsersRepositoryInMemory implements IUsersRepository {
+  users: Users[] = [];
 
-  async create({
-    firstName,
-    lastName,
-    email,
-  }: ICreateUserDTO): Promise<UserTest> {
-    const user = new UserTest();
+  async create({ firstName, lastName, email }: ICreateUserDTO): Promise<Users> {
+    const user = new Users();
 
     Object.assign(user, {
       firstName,
@@ -24,7 +20,7 @@ export class UserRepositoryInMemory implements IUserRepository {
     return user;
   }
 
-  async list(): Promise<UserTest[]> {
+  async list(): Promise<Users[]> {
     return this.users.filter(obj => {
       return obj;
     });
@@ -33,7 +29,7 @@ export class UserRepositoryInMemory implements IUserRepository {
   async update(
     id: string,
     { firstName, lastName, email }: IUpdateUserDTO
-  ): Promise<UserTest> {
+  ): Promise<Users> {
     const userIndex = this.users.findIndex(user => user.id === id);
 
     const user = this.users[userIndex];

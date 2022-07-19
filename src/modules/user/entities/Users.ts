@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('user_test')
-export class UserTest {
+@Entity('users')
+export class Users {
   @PrimaryColumn()
   id: string;
 

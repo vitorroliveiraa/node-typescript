@@ -1,25 +1,21 @@
 import { Repository } from 'typeorm';
 
-import { AppDataSource } from '../../../../database/data-source';
+import dataSource from '../../../../database';
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
 import { IUpdateUserDTO } from '../../dtos/IUpdateUserDTO';
-import { UserTest } from '../../entities/user';
-import { IUserRepository } from '../IUserRepository';
+import { Users } from '../../entities/Users';
+import { IUsersRepository } from '../IUsersRepository';
 
 // const repository = AppDataSource.getRepository(UserTest);
 
-export class UserRepository implements IUserRepository {
-  private repository: Repository<UserTest>;
+export class UsersRepository implements IUsersRepository {
+  private repository: Repository<Users>;
 
   constructor() {
-    this.repository = AppDataSource.getRepository(UserTest);
+    this.repository = dataSource.getRepository(Users);
   }
 
-  async create({
-    firstName,
-    lastName,
-    email,
-  }: ICreateUserDTO): Promise<UserTest> {
+  async create({ firstName, lastName, email }: ICreateUserDTO): Promise<Users> {
     const user = this.repository.create({
       firstName,
       lastName,
@@ -31,7 +27,7 @@ export class UserRepository implements IUserRepository {
     return user;
   }
 
-  async list(): Promise<UserTest[]> {
+  async list(): Promise<Users[]> {
     const users = this.repository.find();
 
     return users;
@@ -40,7 +36,7 @@ export class UserRepository implements IUserRepository {
   async update(
     id: string,
     { firstName, lastName, email }: IUpdateUserDTO
-  ): Promise<UserTest | null> {
+  ): Promise<Users | null> {
     const user = await this.repository.findOneBy({ id });
 
     if (user !== null) {
