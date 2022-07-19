@@ -1,8 +1,5 @@
 import { DataSource } from 'typeorm';
 
-import { Users } from '../modules/user/entities/Users';
-// import { UsersEntity1658154534266 } from './migrations/1658154534266-UsersEntity';
-
 // const defaultHost = process.env.DEFAULT_HOST;
 
 const dataSource = new DataSource({
