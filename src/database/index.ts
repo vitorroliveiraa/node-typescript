@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 
-// const defaultHost = process.env.DEFAULT_HOST;
+// const defaultHostt = process.env.DEFAULT_HOST;
 
 const dataSource = new DataSource({
   applicationName: 'db_users',
