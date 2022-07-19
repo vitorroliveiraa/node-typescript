@@ -10,19 +10,12 @@ export class CreateUsersUseCase {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository
   ) {}
-  // private userRepository: IUserRepository;
-
-  // constructor(userRepository: IUserRepository) {
-  //   this.userRepository = userRepository;
-  // }
 
   async execute({
     firstName,
     lastName,
     email,
   }: ICreateUserDTO): Promise<Users> {
-    console.log('useCase');
-
     const user = await this.usersRepository.create({
       firstName,
       lastName,
