@@ -6,7 +6,7 @@ import { app } from '../../../../shared/infra/http/app';
 
 let connection: DataSource;
 
-describe('Create User Controller', () => {
+describe('List All Users', () => {
   beforeAll(async () => {
     connection = await createConnection('localhost');
     await connection.runMigrations();
@@ -17,13 +17,9 @@ describe('Create User Controller', () => {
     await connection.destroy();
   });
 
-  it('should create a new user', async () => {
-    const response = await request(app).post('/users').send({
-      firstName: 'Rhoda',
-      lastName: 'Larson',
-      email: 'pododjet@ape.ye',
-    });
+  it('should list all users', async () => {
+    const response = await request(app).get('/users').send();
 
-    expect(response.status).toBe(201);
+    expect(response.statusCode).toBe(200);
   });
 });
