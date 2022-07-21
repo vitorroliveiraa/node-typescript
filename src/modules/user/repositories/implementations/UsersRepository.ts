@@ -33,6 +33,10 @@ export class UsersRepository implements IUsersRepository {
     return users;
   }
 
+  async findUserBy(id: string): Promise<Users | null> {
+    return this.repository.findOneBy({ id });
+  }
+
   async update(
     id: string,
     { firstName, lastName, email }: IUpdateUserDTO
