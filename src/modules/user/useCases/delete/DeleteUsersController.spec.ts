@@ -6,7 +6,7 @@ import { app } from '../../../../shared/infra/http/app';
 
 let connection: DataSource;
 
-describe('Update Users Controller', () => {
+describe('Delete Users Controller', () => {
   beforeAll(async () => {
     connection = await createConnection('localhost');
     await connection.runMigrations();
@@ -17,7 +17,7 @@ describe('Update Users Controller', () => {
     await connection.destroy();
   });
 
-  it('should be able to update a user', async () => {
+  it('should be able to delete a user', async () => {
     const createdUser = await request(app).post('/users').send({
       firstName: 'Rhoda',
       lastName: 'Larson',
@@ -26,12 +26,8 @@ describe('Update Users Controller', () => {
 
     const { id } = createdUser.body;
 
-    const response = await request(app).put(`/users/update/${id}`).send({
-      firstName: 'Gordon',
-      lastName: 'Young',
-      email: 'vut@lovlahwo.am',
-    });
+    const response = await request(app).delete(`/users/${id}`).send();
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(204);
   });
 });
