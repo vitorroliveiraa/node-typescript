@@ -15,7 +15,7 @@ const dataSource = new DataSource({
   synchronize: false,
   useUTC: false, // false: local time | true: UTC
   uuidExtension: 'uuid-ossp',
-  logging: ['query', 'error'],
+  logging: ['error', 'log'],
   entities: [`${__dirname}/../modules/**/entities/*.{ts,js}`],
   // entities: [Users],
   migrations: [`${__dirname}/migrations/*.{ts,js}`],
