@@ -6,8 +6,6 @@ import { IUpdateUserDTO } from '../../dtos/IUpdateUserDTO';
 import { Users } from '../../entities/Users';
 import { IUsersRepository } from '../IUsersRepository';
 
-// const repository = AppDataSource.getRepository(UserTest);
-
 export class UsersRepository implements IUsersRepository {
   private repository: Repository<Users>;
 

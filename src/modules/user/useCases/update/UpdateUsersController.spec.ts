@@ -8,7 +8,7 @@ let connection: DataSource;
 
 describe('Update Users Controller', () => {
   beforeAll(async () => {
-    connection = await createConnection('localhost');
+    connection = await createConnection();
     await connection.runMigrations();
   });
 
