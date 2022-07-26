@@ -1,7 +1,7 @@
 {
-  "name": "typescript",
-  "version": "1.0.0",
-  "description": "",
+  "name": "node-typescript-boilerplate",
+  "version": "0.0.1",
+  "description": "Boilerplate - API Node/Typescript",
   "main": "server.ts",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
@@ -16,7 +16,15 @@
     "test:watch": "jest --watchAll -i"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Vítor Oliveira",
+    "email": "vitorroliveiraa@outlook.com.br",
+    "url": "https://vitorroliveiraa.herokuapp.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitorroliveiraa/node-typescript-boilerplate/"
+  },
   "license": "ISC",
   "engines": {
     "node": ">=14"
