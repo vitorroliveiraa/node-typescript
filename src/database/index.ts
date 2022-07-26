@@ -1,12 +1,12 @@
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-// const defaultHostt = process.env.DEFAULT_HOST;
+const host = process.env.HOST;
 
-const dataSource = new DataSource({
+const options: DataSourceOptions = {
   applicationName: 'db_users',
   type: 'postgres',
-  port: 8482,
-  // host: process.env.NODE_ENV === 'test' ? 'localhost' : defaultHost,
+  port: process.env.NODE_ENV === 'test' ? 8482 : 5432,
+  host: process.env.NODE_ENV === 'test' ? 'localhost' : host,
   username: 'admin',
   password: 'admin',
   database: process.env.NODE_ENV === 'test' ? 'users_test' : 'users',
@@ -21,10 +21,12 @@ const dataSource = new DataSource({
   migrations: [`${__dirname}/migrations/*.{ts,js}`],
   // migrations: [UsersEntity1658154534266],
   migrationsTableName: '_migrations',
-});
+};
 
-export function createConnection(host = 'db_users'): Promise<DataSource> {
-  return dataSource.setOptions({ host }).initialize();
+const dataSource = new DataSource(options);
+
+export function createConnection(): Promise<DataSource> {
+  return dataSource.initialize();
 }
 
 export default dataSource;

@@ -13,20 +13,21 @@ services:
       - POSTGRES_DB=users
     volumes:
       - pgdata:/data/postgres
-  # app_hello_world:
-  #   build: .
-  #   container_name: app_hello_world
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - 4545:4545
-  #   volumes:
-  #     - .:/usr/app
-  #   links:
-  #     - db_hello_world
-  #   depends_on:
-  #     - db_hello_world
+
+  app:
+    build: .
+    container_name: users
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 4545:4545
+    volumes:
+      - .:/usr/app
+    links:
+      - db_users
+    depends_on:
+      - db_users
 
 volumes:
   pgdata:

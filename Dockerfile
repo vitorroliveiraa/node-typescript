@@ -12,7 +12,7 @@ WORKDIR /usr/app
 COPY package*.json ./
 
 # INSTALA TODOS OS PACOTES E DEPENDÊNCIAS DE PACKAGE.JSON
-RUN yarn
+RUN yarn install --frozen-lockfile
 
 # COPIA OS DEMAIS ARQUIVOS
 COPY . .
